@@ -9,14 +9,14 @@ public class Transegunte {
     private boolean puedeRecibirNotificaciones;
     private List<Destino> destino;
     private Integer minutosDeFalsaAlarma;
-    private List<Alerta> alertas;
+    private boolean alertas;
     Cuidador Nuevocuidador = new Cuidador();
 
 
     public Transegunte() {
         cuidadores = new ArrayList<Observer>();
         destino = new ArrayList<>();
-        alertas = new ArrayList<>();
+        alertas = false;
         puedeRecibirNotificaciones = true;
         minutosDeFalsaAlarma = 0;
     }
@@ -30,7 +30,7 @@ public class Transegunte {
 
     public void finalizarViaje() {
         destino.clear();
-        alertas.clear();
+        alertas = true ;
 
         Nuevocuidador.evaluarCuidado();
     }
@@ -38,17 +38,18 @@ public class Transegunte {
         destino.add(destinoNuevo);
     }
 
-    public void seleccionarCuidador() {
+    public void seleccionarCuidador(Observer cuidador) {
     }
 
     public void irHaciaUnDestino() {
+
     }
 
     public void chequearTiempo() {
     }
 
     public boolean estoyEnPeligro() {
-        return false;
+
     }
 
     public void establecerMinutosDeFalsaAlarma(Integer minutos) {
@@ -63,7 +64,7 @@ class Alerta {
 }
 
 interface Observer {
-    void update(); // This would be called to notify the observer of changes
+    void update();
 }
 
 }
